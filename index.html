@@ -2,603 +2,490 @@
 <!DOCTYPE html>
 <html lang="sq">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BIGVIPKOSOVA - Lajme, video dhe përditësime nga Big Brother VIP Kosova.">
-<title>BIGVIPKOSOVA - Lajmet dhe LIVE</title>
-
-<style>
-:root {
-  --blue: #087be8;
-  --dark: #171b23;
-  --light: #f2f4f7;
-  --muted: #687180;
-}
-
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #252932;
-  background: var(--light);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.topline {
-  height: 4px;
-  background: var(--blue);
-}
-
-header {
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.nav {
-  max-width: 1200px;
-  min-height: 82px;
-  margin: auto;
-  padding: 15px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 22px;
-}
-
-.logo {
-  font-size: 25px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-
-.logo span { color: var(--blue); }
-
-.links {
-  display: flex;
-  gap: 7px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.links a {
-  padding: 11px 13px;
-  font-size: 13px;
-  border-radius: 3px;
-}
-
-.links a:hover,
-.links a.active {
-  background: var(--blue);
-  color: white;
-}
-
-.search {
-  display: flex;
-  height: 38px;
-}
-
-.search input {
-  width: 135px;
-  min-width: 0;
-  padding: 9px;
-  border: 1px solid #d5dbe4;
-  border-radius: 4px 0 0 4px;
-  outline-color: var(--blue);
-}
-
-.search button {
-  background: var(--blue);
-  color: white;
-  border: 0;
-  padding: 0 13px;
-  cursor: pointer;
-  border-radius: 0 4px 4px 0;
-}
-
-.page {
-  max-width: 1100px;
-  margin: 25px auto;
-  padding: 0 15px;
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(235px, .85fr);
-  gap: 18px;
-  align-items: start;
-}
-
-.content,
-.side-card {
-  background: white;
-  border: 1px solid #e9ebef;
-}
-
-.content {
-  padding: 23px;
-  min-width: 0;
-}
-
-h1 {
-  font-size: 28px;
-  line-height: 1.3;
-  margin: 0 0 18px;
-}
-
-h2 {
-  font-size: 22px;
-  line-height: 1.4;
-}
-
-p {
-  line-height: 1.8;
-  font-size: 14px;
-}
-
-.intro {
-  color: #565e6a;
-  margin-bottom: 24px;
-}
-
-.channels {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 23px;
-}
-
-.channel {
-  background: #f1f6ff;
-  border: 1px solid #dbe7f9;
-  padding: 20px 10px;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.channel strong {
-  display: block;
-  font-size: 17px;
-  color: #154ca0;
-  margin-bottom: 5px;
-}
-
-.channel small {
-  display: block;
-  font-size: 11px;
-  color: #606b7c;
-}
-
-.channel a {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 8px 13px;
-  background: var(--blue);
-  color: white;
-  font-size: 12px;
-  border-radius: 3px;
-}
-
-.section-title {
-  border-left: 4px solid var(--blue);
-  padding-left: 12px;
-  margin: 28px 0 18px;
-}
-
-.feature {
-  border: 1px solid #e5e8ee;
-  margin-top: 20px;
-}
-
-.feature-art {
-  min-height: 230px;
-  background: linear-gradient(130deg, #10294a, #087be8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 25px;
-}
-
-.feature-art .brand {
-  font-size: clamp(27px, 5vw, 43px);
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.feature-art .brand span {
-  color: #b8ddff;
-}
-
-.feature-art small {
-  display: block;
-  margin-top: 12px;
-  letter-spacing: 3px;
-}
-
-.feature-info {
-  padding: 20px;
-}
-
-.tag {
-  color: var(--blue);
-  font-weight: bold;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.feature-info h2 {
-  margin: 8px 0;
-}
-
-.feature-info p { color: var(--muted); }
-
-.readmore {
-  display: inline-block;
-  margin-top: 7px;
-  color: var(--blue);
-  font-weight: bold;
-  font-size: 13px;
-}
-
-.news-list {
-  display: grid;
-  gap: 12px;
-}
-
-.news {
-  display: grid;
-  grid-template-columns: 105px minmax(0, 1fr);
-  gap: 14px;
-  padding: 13px 0;
-  border-bottom: 1px solid #e9ebef;
-}
-
-.news-thumb {
-  min-height: 85px;
-  background: linear-gradient(135deg, #dbeafe, #a7cafa);
-  display: grid;
-  place-items: center;
-  color: #1258a8;
-  font-weight: 900;
-  font-size: 19px;
-}
-
-.news h3 {
-  font-size: 15px;
-  margin: 4px 0 6px;
-  line-height: 1.5;
-}
-
-.news p {
-  margin: 0;
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.sidebar {
-  display: grid;
-  gap: 17px;
-  min-width: 0;
-}
-
-.side-card { padding: 18px; }
-
-.side-card h3 {
-  font-size: 17px;
-  margin: 0 0 15px;
-}
-
-.ad {
-  min-height: 230px;
-  background: #f7f9fc;
-  border: 1px dashed #c7d0de;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 20px;
-}
-
-.ad .ad-label {
-  font-size: 10px;
-  color: #858e9b;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-.ad strong {
-  font-size: 23px;
-  color: #225ca5;
-  line-height: 1.4;
-}
-
-.ad p {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.recent {
-  display: grid;
-  gap: 15px;
-}
-
-.recent a {
-  font-size: 13px;
-  line-height: 1.6;
-  color: #444b56;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 12px;
-}
-
-.recent a:hover { color: var(--blue); }
-
-.poll {
-  background: #f7f9fc;
-  padding: 15px;
-}
-
-.poll p {
-  margin-top: 0;
-  font-weight: bold;
-}
-
-.poll a {
-  display: block;
-  margin-top: 10px;
-  padding: 10px;
-  background: white;
-  border: 1px solid #dfe5ed;
-  font-size: 12px;
-}
-
-footer {
-  background: #171b23;
-  color: #c4cad3;
-  margin-top: 35px;
-  padding: 30px 15px;
-  text-align: center;
-  font-size: 12px;
-}
-
-footer strong { color: white; }
-
-footer p {
-  font-size: 12px;
-  margin: 7px 0;
-}
-
-@media (max-width: 850px) {
-  .nav {
-    flex-wrap: wrap;
-  }
-
-  .links {
-    order: 3;
-    width: 100%;
-  }
-
-  .search { margin-left: auto; }
-
-  .page {
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 700px;
-  }
-
-  .sidebar {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .sidebar .side-card:first-child {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 500px) {
-  .nav { padding: 14px; }
-  .logo { font-size: 21px; }
-  .links { gap: 3px; }
-  .links a { padding: 9px 8px; font-size: 12px; }
-  .page { margin-top: 14px; padding: 0 10px; }
-  .content { padding: 15px; }
-  h1 { font-size: 23px; }
-  .channels { grid-template-columns: 1fr; }
-  .sidebar { grid-template-columns: 1fr; }
-  .sidebar .side-card:first-child { grid-column: auto; }
-  .feature-art { min-height: 180px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087bea">
+  <meta name="description" content="BIGVIPKOSOVA – lajme, momente dhe përditësime rreth Big Brother VIP Kosova.">
+  <title>BIGVIPKOSOVA – Lajmet dhe LIVE</title>
+
+  <style>
+    :root {
+      --blue: #087bea;
+      --dark: #172235;
+      --muted: #667085;
+      --bg: #f1f3f6;
+      --border: #e4e8ef;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.65;
+    }
+
+    a { color: var(--blue); }
+
+    .topline {
+      height: 4px;
+      background: var(--blue);
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-decoration: none;
+      color: var(--dark);
+    }
+
+    .logo span { color: var(--blue); }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      padding: 9px 12px;
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 14px;
+      border-radius: 5px;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--blue);
+      color: white;
+    }
+
+    .search {
+      display: flex;
+      gap: 5px;
+    }
+
+    .search input {
+      width: 165px;
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button, .btn {
+      background: var(--blue);
+      color: white;
+      border: 0;
+      border-radius: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    button:hover, .btn:hover { background: #0565c5; }
+
+    .layout {
+      max-width: 1180px;
+      margin: 24px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(240px, .85fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    main, .side-card, .ad {
+      background: white;
+      border: 1px solid var(--border);
+    }
+
+    main { padding: 24px; min-width: 0; }
+
+    h1 {
+      font-size: clamp(23px, 3vw, 30px);
+      line-height: 1.3;
+      margin: 0 0 18px;
+    }
+
+    h2 { font-size: 21px; line-height: 1.4; }
+
+    .live-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .live-card {
+      background: #f0f6ff;
+      border: 1px solid #d7e6ff;
+      border-radius: 5px;
+      padding: 18px 12px;
+      text-align: center;
+    }
+
+    .live-card h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+      color: #0754aa;
+    }
+
+    .live-card p {
+      margin: 0 0 12px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .intro { color: #515c6e; font-size: 14px; }
+
+    .section-title {
+      border-left: 4px solid var(--blue);
+      padding-left: 12px;
+      margin: 28px 0 16px;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #12345a, #087bea);
+      color: white;
+      text-align: center;
+      padding: 52px 15px;
+      margin: 18px 0 0;
+    }
+
+    .hero strong {
+      font-size: clamp(26px, 5vw, 42px);
+      letter-spacing: 2px;
+    }
+
+    .hero p {
+      margin: 5px 0 0;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .featured {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-top: 0;
+    }
+
+    .tag {
+      color: var(--blue);
+      font-weight: bold;
+      font-size: 11px;
+      letter-spacing: .6px;
+    }
+
+    .featured h2 { margin: 4px 0 10px; }
+
+    .featured p, .article p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .article {
+      padding: 17px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article h3 { margin: 5px 0; font-size: 18px; }
+    .article p { margin: 5px 0 12px; }
+
+    .side-card, .ad {
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .ad {
+      text-align: center;
+      min-height: 150px;
+      border-style: dashed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+    }
+
+    .ad strong { color: #0754aa; font-size: 19px; }
+    .ad small { letter-spacing: 2px; font-size: 10px; }
+
+    .side-card h3 { margin: 0 0 12px; font-size: 17px; }
+
+    .side-link {
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      color: #424d5d;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .side-link:hover { color: var(--blue); }
+
+    .poll {
+      background: #f5f7fa;
+      padding: 14px;
+      font-size: 14px;
+    }
+
+    .poll label { display: block; margin: 10px 0; }
+
+    .notice {
+      padding: 12px;
+      background: #fff8e6;
+      border: 1px solid #f0dfad;
+      color: #76551a;
+      font-size: 13px;
+      border-radius: 4px;
+    }
+
+    #searchMessage {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      background: white;
+      border-top: 1px solid var(--border);
+      padding: 25px 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .nav { justify-content: center; }
+      nav { justify-content: center; }
+      .search { width: 100%; }
+      .search input { flex: 1; width: auto; }
+      .layout { grid-template-columns: 1fr; margin-top: 14px; }
+      main { padding: 17px; }
+      .side { display: grid; grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 400px) {
+      .live-grid { grid-template-columns: 1fr; }
+      nav a { padding: 8px; }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="topline"></div>
 
-<div class="topline"></div>
+  <header>
+    <div class="nav">
+      <a class="logo" href="#ballina">BIGVIP<span>KOSOVA</span></a>
 
-<header>
-  <div class="nav">
-    <a href="#home" class="logo">BIGVIP<span>KOSOVA</span></a>
+      <nav aria-label="Menyja kryesore">
+        <a class="active" href="#ballina">⌂ Ballina</a>
+        <a href="#live">▶ Shiko LIVE</a>
+        <a href="#lajmet">Lajmet</a>
+        <a href="#votimi">Votimi</a>
+      </nav>
 
-    <nav class="links">
-      <a class="active" href="#home">⌂ Ballina</a>
-      <a href="#live">▶ Shiko LIVE</a>
-      <a href="#kanalet">▣ Kanali 1</a>
-      <a href="#kanalet">▣ Kanali 2</a>
-    </nav>
-
-    <form class="search" id="searchForm">
-      <input id="searchInput" type="search" placeholder="Kërko lajme..." aria-label="Kërko lajme">
-      <button type="submit" aria-label="Kërko">⌕</button>
-    </form>
-  </div>
-</header>
-
-<main class="page" id="home">
-
-  <article class="content">
-    <h1>Big Brother VIP Kosova – Lajmet dhe LIVE</h1>
-
-    <div class="channels" id="kanalet">
-      <div class="channel">
-        <strong>BBVK KANALI 1</strong>
-        <small>TRANSMETIMI LIVE</small>
-        <a href="#live">SHIKO KËTU</a>
-      </div>
-
-      <div class="channel">
-        <strong>BBVK KANALI 2</strong>
-        <small>TRANSMETIMI LIVE</small>
-        <a href="#live">SHIKO KËTU</a>
-      </div>
+      <form class="search" id="searchForm">
+        <input id="searchInput" type="search"
+          placeholder="Kërko lajme..." aria-label="Kërko lajme">
+        <button type="submit" aria-label="Kërko">⌕</button>
+      </form>
     </div>
+  </header>
 
-    <p class="intro">
-      Mirë se erdhe në BIGVIPKOSOVA! Këtu mund të gjesh lajme,
-      përditësime dhe momentet më interesante rreth Big Brother VIP Kosova.
-      Ndiq përmbajtjet e reja dhe qëndro i informuar.
-    </p>
+  <div class="layout" id="ballina">
+    <main>
+      <h1>Big Brother VIP Kosova – Lajmet dhe LIVE</h1>
 
-    <h2 class="section-title">Çfarë po ndodh në BBVK?</h2>
+      <section id="live">
+        <div class="live-grid">
+          <div class="live-card">
+            <h3>BBVK KANALI 1</h3>
+            <p>TRANSMETIMI ZYRTAR LIVE</p>
+            <!-- Zëvendëso # me adresën zyrtare të kanalit -->
+            <a class="btn official-link" href="#"
+              data-channel="1">▶ SHIKO KËTU</a>
+          </div>
 
-    <div class="feature">
-      <div class="feature-art">
-        <div>
-          <div class="brand">BIGVIP<span>KOSOVA</span></div>
-          <small>LAJME • MOMENTE • SPEKTAKËL</small>
+          <div class="live-card">
+            <h3>BBVK KANALI 2</h3>
+            <p>TRANSMETIMI ZYRTAR LIVE</p>
+            <!-- Zëvendëso # me adresën zyrtare të kanalit -->
+            <a class="btn official-link" href="#"
+              data-channel="2">▶ SHIKO KËTU</a>
+          </div>
         </div>
-      </div>
 
-      <div class="feature-info">
-        <div class="tag">Artikulli kryesor</div>
-        <h2>Lajmet dhe momentet më të fundit</h2>
-        <p>
-          Kjo hapësirë është për lajmin kryesor të ditës.
-          Përditëso titullin dhe tekstin me informacion të verifikuar
-          para publikimit.
+        <p class="notice">
+          Për të parë transmetimin, përdor lidhjen zyrtare të kanalit.
+          Lidhjet e transmetimit duhen shtuar para se këta butona
+          të hapin një video.
         </p>
-        <a class="readmore" href="#lajmet">Lexo më shumë →</a>
-      </div>
-    </div>
+      </section>
 
-    <h2 class="section-title" id="lajmet">Lajmet e fundit</h2>
+      <p class="intro">
+        Mirë se erdhe në BIGVIPKOSOVA! Këtu mund të gjesh lajme,
+        përditësime dhe momentet më interesante rreth Big Brother
+        VIP Kosova. Ndiq përmbajtje të reja dhe qëndro i informuar.
+      </p>
 
-    <div class="news-list">
-      <article class="news" data-search="lajmet banoret bbvk">
-        <div class="news-thumb">BBVK</div>
-        <div>
-          <div class="tag">Lajme</div>
-          <h3>Përditësimet e fundit nga shtëpia</h3>
-          <p>Publiko këtu lajmin e verifikuar dhe informacionet e reja.</p>
+      <section id="lajmet">
+        <h2 class="section-title">Çfarë po ndodh në BBVK?</h2>
+
+        <div class="hero">
+          <strong>BIGVIPKOSOVA</strong>
+          <p>LAJME · MOMENTE · SPEKTakËL</p>
         </div>
-      </article>
 
-      <article class="news" data-search="video momentet spektakli">
-        <div class="news-thumb">VIDEO</div>
-        <div>
-          <div class="tag">Momente</div>
-          <h3>Momentet më të komentuara të spektaklit</h3>
-          <p>Shto përmbledhje dhe video që ke të drejtë t'i publikosh.</p>
-        </div>
-      </article>
+        <article class="featured searchable">
+          <span class="tag">ARTIKULL KRYESOR</span>
+          <h2>Lajmet dhe momentet më të fundit</h2>
+          <p>
+            Kjo hapësirë është për lajmin kryesor të ditës.
+            Përditëso titullin dhe tekstin me informacion të verifikuar
+            para publikimit.
+          </p>
+        </article>
 
-      <article class="news" data-search="banoret nominimet eliminimi">
-        <div class="news-thumb">VIP</div>
-        <div>
-          <div class="tag">Banorët</div>
-          <h3>Nominimet dhe zhvillimet e reja</h3>
-          <p>Mbaje audiencën të informuar me lajme të sakta.</p>
-        </div>
-      </article>
-    </div>
+        <article class="article searchable">
+          <span class="tag">PËRDITËSIME</span>
+          <h3>Çfarë po ndodh në shtëpinë e BBVK?</h3>
+          <p>
+            Shto këtu një përmbledhje të shkurtër të lajmit.
+            Publiko vetëm informacione që i ke verifikuar.
+          </p>
+        </article>
 
-    <h2 class="section-title" id="live">Transmetimi LIVE</h2>
+        <article class="article searchable">
+          <span class="tag">MOMENTE</span>
+          <h3>Momentet që po tërheqin vëmendjen</h3>
+          <p>
+            Përshkruaj momentet e emisionit me fjalët e tua
+            dhe shto burimin kur është e nevojshme.
+          </p>
+        </article>
 
-    <p class="intro">
-      Transmetimi do të jetë i disponueshëm këtu pasi të vendoset
-      një lidhje zyrtare e autorizuar. Butonat më sipër nuk janë
-      transmetime aktive derisa t'u shtohen lidhjet përkatëse.
-    </p>
+        <article class="article searchable">
+          <span class="tag">NJOFTIME</span>
+          <h3>Ku mund ta ndjekësh transmetimin zyrtar?</h3>
+          <p>
+            Shto adresën e faqes zyrtare ku ofrohet transmetimi.
+          </p>
+        </article>
 
-    <p>
-      <a class="readmore"
-         href="https://www.google.com/search?q=Big+Brother+VIP+Kosova+transmetim+zyrtar"
-         target="_blank" rel="noopener noreferrer">
-        Gjej burimin zyrtar të transmetimit →
-      </a>
-    </p>
-  </article>
+        <p id="searchMessage" aria-live="polite"></p>
+      </section>
+    </main>
 
-  <aside class="sidebar">
-
-    <div class="side-card ad">
-      <div class="ad-label">REKLAMË</div>
-      <strong>Reklamo biznesin tënd</strong>
-      <p>Promovo shërbimet ose produktet e tua këtu.</p>
-    </div>
-
-    <div class="side-card">
-      <h3>Lajmet e fundit</h3>
-      <div class="recent">
-        <a href="#lajmet">Përditësimet më të reja nga BBVK</a>
-        <a href="#lajmet">Çfarë po ndodh në shtëpinë e BBVK?</a>
-        <a href="#lajmet">Momentet që po tërheqin vëmendje</a>
-        <a href="#lajmet">Nominimet dhe lajmet e spektaklit</a>
-        <a href="#live">Ku mund ta gjesh transmetimin zyrtar?</a>
+    <aside class="side">
+      <div class="ad">
+        <small>REKLAMË</small>
+        <strong>Reklamo biznesin tënd</strong>
+        <p>Promovo shërbimet ose produktet e tua këtu.</p>
       </div>
-    </div>
 
-    <div class="side-card">
-      <h3>Votimi</h3>
-      <div class="poll">
-        <p>Dëshiron të votosh për banorin tënd të preferuar?</p>
-        <a href="https://www.google.com/search?q=Big+Brother+VIP+Kosova+votimi+zyrtar"
-           target="_blank" rel="noopener noreferrer">
-          Informohu për votimin zyrtar →
-        </a>
+      <div class="side-card">
+        <h3>Lajmet e fundit</h3>
+        <a class="side-link" href="#lajmet">Përditësimet më të reja nga BBVK</a>
+        <a class="side-link" href="#lajmet">Çfarë po ndodh në shtëpi?</a>
+        <a class="side-link" href="#lajmet">Momentet që po tërheqin vëmendje</a>
+        <a class="side-link" href="#lajmet">Nominimet dhe lajmet e spektaklit</a>
       </div>
-    </div>
 
-  </aside>
+      <div class="side-card" id="votimi">
+        <h3>Votimi</h3>
+        <div class="poll">
+          <strong>Dëshiron të votosh për banorin tënd të preferuar?</strong>
+          <p>Voto vetëm në platformën zyrtare të emisionit.</p>
+          <a class="btn" href="https://klankosova.tv/"
+             target="_blank" rel="noopener noreferrer">
+            Informohu zyrtarisht →
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
 
-</main>
+  <footer>
+    <strong>BIGVIPKOSOVA</strong>
+    <p>Faqe informative për fansat. Nuk është faqe zyrtare e emisionit.</p>
+    <p>© <span id="year"></span> BIGVIPKOSOVA</p>
+  </footer>
 
-<footer>
-  <strong>BIGVIPKOSOVA</strong>
-  <p>© <span id="year"></span> BIGVIPKOSOVA. Të gjitha të drejtat e rezervuara.</p>
-  <p>Faqe jozyrtare për fansat. Nuk është e lidhur me produksionin e BBVK.</p>
-</footer>
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
+    // Kërkimi funksionon mbi artikujt që janë publikuar në këtë faqe.
+    document.getElementById("searchForm").addEventListener("submit",
+      function (event) {
+        event.preventDefault();
 
-document.getElementById("searchForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+        const query = document.getElementById("searchInput")
+          .value.trim().toLocaleLowerCase("sq");
 
-  const query = document.getElementById("searchInput").value.trim().toLowerCase();
-  const articles = document.querySelectorAll(".news");
-  let matches = 0;
+        const articles = document.querySelectorAll(".searchable");
+        const message = document.getElementById("searchMessage");
+        let matches = 0;
 
-  articles.forEach(function(article) {
-    const content = (article.innerText + " " + (article.dataset.search || "")).toLowerCase();
-    const visible = !query || content.includes(query);
-    article.hidden = !visible;
-    if (visible) matches++;
-  });
+        articles.forEach(function (article) {
+          const found = article.textContent
+            .toLocaleLowerCase("sq").includes(query);
 
-  document.getElementById("lajmet").scrollIntoView({ behavior: "smooth" });
+          article.hidden = query !== "" && !found;
 
-  if (query && matches === 0) {
-    alert("Nuk u gjet asnjë rezultat. Provo një fjalë tjetër.");
-  }
-});
-</script>
+          if (article.hidden === false && query !== "") {
+            matches++;
+          }
+        });
 
+        if (query === "") {
+          message.textContent = "";
+        } else if (matches === 0) {
+          message.textContent = "Nuk u gjet asnjë artikull. Provo fjalë të tjera.";
+        } else {
+          message.textContent = "U gjetën " + matches + " rezultate.";
+        }
+      });
+
+    // Butonat LIVE kërkojnë adresat zyrtare.
+    document.querySelectorAll(".official-link").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        const address = link.getAttribute("href");
+
+        if (!address || address === "#") {
+          event.preventDefault();
+          alert("Ky kanal nuk është lidhur ende. Duhet të shtosh adresën zyrtare të transmetimit.");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
